@@ -1,0 +1,49 @@
+body {
+  background-color: bisque;
+}
+
+#header-css {
+  background-color: #d3b9a3;
+}
+
+.aluguel-carros {
+  min-width: 64px;
+}
+
+.data-navbar-title {
+  font-size: 24px;
+  font-weight: bolder;
+}
+
+#page-title {
+  text-align: center;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: bold;
+  font-size: 36px;
+  color: darkblue;
+  line-height: 1;
+  background-color: #d3b9a3;
+}
+
+.gray-gradient {
+  background: radial-gradient(circle, #ddd, #eee, #fff, #fff);
+}
+
+.coluna-usuario-info-foto {
+  min-width: 64px !important;
+  max-width: 64px !important;
+}
+.coluna-usuario-info-nome {
+  min-width: 256px !important;
+  max-width: 256px !important;
+}
+.coluna-usuario-info-usuario-master {
+  min-width: 228px !important;
+  max-width: 228px !important;
+}
+
+.img-top {
+  max-width:380px !important;
+  width:380px !important;
+  height:320px !important;
+}
