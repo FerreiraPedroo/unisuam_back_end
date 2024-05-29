@@ -2,6 +2,8 @@
 
 $paginaSelecionada = explode("/", $_SERVER["REQUEST_URI"])[1];
 
+echo $paginaSelecionada;
+
 
 ?>
 
@@ -9,7 +11,8 @@ $paginaSelecionada = explode("/", $_SERVER["REQUEST_URI"])[1];
     <nav class="navbar navbar-expand-lg m-0 p-0">
         <div class="container-fluid">
             <a class="data-navbar-title navbar-brand d-flex align-items-center gap-2 p-1 " href="/">
-                <img src="../../src/img/logo.png" alt="Logo" width="58" height="40" class="d-inline-block align-text-top">
+                <img src="../../src/img/logo.png" alt="Logo" width="58" height="40"
+                    class="d-inline-block align-text-top">
                 Aurora's Tour
             </a>
 
@@ -34,48 +37,96 @@ $paginaSelecionada = explode("/", $_SERVER["REQUEST_URI"])[1];
     <nav class="bg-white d-flex flex-column justify-content-center w-auto mx-5 p-1 border rounded-3 gap-3">
         <ul class="navbar-nav d-flex flex-row justify-content-center gap-5">
             <li class="nav-item">
-                <a class="nav-link d-flex flex-column align-items-center <?php echo $paginaSelecionada == "passagens" ? "fw-bolder" : "" ?>" aria-current="page" href="/passagens">
-                    <img src="../../src/img/icons8-suitcase-96.png" alt="User" width="32" height="32" class="">
-                    Passagens
+                <a class="nav-link d-flex flex-column align-items-center" aria-current="page"
+                    href="./viagens/index.php">
+                    <img src="../src/img/Viagem.png" alt="Viagens" width="36" height="36">
+                    <strong> Viagens </strong>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-flex flex-column align-items-center <?php echo $paginaSelecionada == "pacotes" ? "fw-bolder" : "" ?>" aria-current="page" href="/pacotes">
-                    <img src="../../src/img/icons8-suitcase-96.png" alt="User" width="32" height="32" class="d-inline-block align-text-top">
-                    Pacotes
+                <a class="nav-link d-flex flex-column align-items-center" aria-current="page" href="/pacotes">
+                    <img src="../src/img/Pacotes.png" alt="Pacotes" width="36" height="36">
+                    <strong> Pacotes </strong>
                 </a>
             </li>
             <li class="nav-item">
-                <a class=" nav-link d-flex flex-column align-items-center aluguel-carros <?php echo $paginaSelecionada == "aluguel-carros" ? "fw-bolder" : "" ?>" aria-current="page" href="/carros">
-                    <img src="../../src/img/icons8-car-96.png" alt="User" width="32" height="32" class="d-inline-block align-text-top">
-                    Aluguel de Carros
+                <a class="nav-link d-flex flex-column align-items-center" aria-current="page" href="/hotéis">
+                    <img src="../src/img/hotel.png" alt="Hotéis" width="36" height="36">
+                    <strong> Hotéis </strong>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link d-flex flex-column align-items-center" aria-current="page" href="/ingressos">
+                    <img src="../src/img/ingressos.png" alt="Ingressos" width="36" height="36">
+                    <strong> Ingressos </strong>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link d-flex flex-column align-items-center" aria-current="page" href="/carros">
+                    <img src="../src/img/carro.png" alt="Carros" width="36" height="36">
+                    <strong> Carros </strong>
                 </a>
             </li>
         </ul>
 
-        <form id="passagens-procurar" method="get" action="#" class="container text-center">
-                <div class="d-flex flex-row align-items-center gap-4">
-                    <div class="input-group mb-3">
-                        <label class="input-group-text" for="passagem-input-origem">Origem</label>
-                        <select class="form-select" id="passagem-input-origem" name="origem">
-                            <option value="" <?php if ($origem == "") echo "selected"; ?>>Selecione...</option>
-                            <option value="Rio de Janeiro" <?php if ($origem == "Rio de Janeiro") echo "selected"; ?>>Rio de Janeiro</option>
+        <?php
 
-                        </select>
+        if($paginaSelecionada == "viagens"){
+            $origens = array(
+                "Selecione...",
+                "Galeão - RJ",
+                "Santos Dumont - RJ",
+                "Guarulhos - SP",
+                "Congonhas - SP",
+                "Eduardo Gomes - AM",
+                "Afonso Pena - PR"
+            );
+            $destinos = array(
+                "Selecione...",
+                "Turquia",
+                "Islândia",
+                "Paris",
+                "Roma",
+                "Grécia",
+                "Chile",
+                "Amsterdã"
+            );
+
+        echo `<div id="origens-procurar" class="container text-center">
+            <form method="get" action="#">
+                <div class="d-flex gap-4 w-100">
+                    <div class="d-flex flex-row align-items-center gap-4 w-100">
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="Viagens-input-origem">Origem</label>
+                            <select class="form-select" id="Viagens-input-origem">`;
+
+                                foreach ($origens as $origem) {
+                                    echo "<option value=\"$origem\">$origem</option>";
+                                }
+        echo `
+                            </select>
+                        </div>
                     </div>
-                    <div class="input-group mb-3">
-                        <label class="input-group-text" for="passagem-input-destino">Destino</label>
-                        <select class="form-select" id="passagem-input-destino" name="destino">
-                            <option value="" <?php if ($destino == "") echo "selected"; ?>>Selecione...</option>
-                            <option value="Minas Gerais" <?php if ($destino == "Minas Gerais") echo "selected"; ?>>Minas Gerais</option>
-                            <option value="Brasilia" <?php if ($destino == "Brasilia") echo "selected"; ?>>Brasilia</option>
-                            <option value="Rio de Janeiro" <?php if ($destino == "Rio de Janeiro") echo "selected"; ?>>Rio de Janeiro</option>
-                            <option value="São Paulo" <?php if ($destino == "São Paulo") echo "selected"; ?>>São Paulo</option>
-                        </select>
+                    <div id="Destino-procurar" class="d-flex flex-row align-items-center gap-4 w-100">
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="Viagens-input-Destino">Destino</label>
+                            <select class="form-select" id="Viagens-input-Destino">`;
+                            
+                            foreach ($destinos as $destino) {
+                                echo "<option value=\"$destino\">$destino</option>";
+                            }
+
+                            echo `
+                            </select>
+                        </div>
                     </div>
-                    <input type="date">
-                    <button id="botao-pesquisar-passagem" type="submit" class="btn btn-primary mb-3">Procurar</button>
                 </div>
+                <button type="submit" class="btn btn-primary mb-3">Procurar Destino</button>
             </form>
+        </div>`;
+    }
+    ?>
+
+
     </nav>
 </header>
