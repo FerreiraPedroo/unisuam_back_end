@@ -4,7 +4,7 @@ $req = $_REQUEST;
 
 $id = isset($req["id"]) ? $req["id"] : "";
 $sql = "SELECT * FROM passagem WHERE id='$id'";
-$resultado = $pdo->query($sql);
+$resultado = $pdo->query($sql)
 
 ?>
 
