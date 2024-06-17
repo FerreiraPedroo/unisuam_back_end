@@ -40,11 +40,11 @@ $resultado = $pdo->query($sql)
                 $fotosHTML = "";
 
                 foreach ($fotos as $foto) {
-                    $fotosHTML .= "<img src='../src/img/$foto' class='img-top' alt='...'>";
+                    $fotosHTML .= "<img src='../src/img/$foto' style='width: 30%;' alt='...'>";
                 };
                echo ("
-                    <div class='card text-decoration-none' w-50'>
-                        <div class='d-flex gap-2 p-3 justify-content-center'>
+                    <div class='card text-decoration-none mb-4'>
+                        <div class='d-flex w-100 border gap-2 p-3 justify-content-center'>
                         $fotosHTML
                         </div>
                         <div class='card-body d-flex flex-column gap-2'>
