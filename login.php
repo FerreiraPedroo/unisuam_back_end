@@ -41,13 +41,13 @@ if (isset($_SESSION["login_msg_error"])) {
                     <?php echo $loginMsgError; ?>
                     &nbsp;
                 </p>
-                <div class="card-title text-center">
+                <!-- <div class="card-title text-center">
                     <input class="form-check-input" type="radio" name="usuarytype" value="usuariocomum" />
                     <label class="form-check-label" for="usuariocomum">Usuario Comum</label>
 
                     <input class="form-check-input" type="radio" name="usuarytype" value="usuariomaster">
                     <label class="form-check-label" for="usuariomaster">Usuario Master</label>
-                </div>
+                </div> -->
                 <div class="card-title text-center">
                     <a href="cadastrosimples.php">Ainda não tem um Login? Cadastre-se</a>
                 </div>

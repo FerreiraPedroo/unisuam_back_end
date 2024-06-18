@@ -99,7 +99,7 @@ if ($sessao["usuario_master"] == "master") {
                 echo ('<div class="d-flex flex-column align-items-start gap-2">');
                 echo ('<div class="fs-5 w-0 p-0 bold">Nome: <span class="fs-4 fw-bold">' . $sessao["nome"] . '</span></div>');
                 echo ('<div class="fs-4">Usuário: <span class="fs-4 fw-bold">' . $sessao["usuario_master"] . '</span></div>');
-                echo ('<button type="button" class="btn btn-danger">Deslogar</button>');
+                echo ('<button type="button" class="btn btn-danger" onClick="deslogar()">Deslogar</button>');
                 echo ('</div>');
                 ?>
             </div>
@@ -131,6 +131,11 @@ if ($sessao["usuario_master"] == "master") {
         </div>
     </main>
 
+    <script>
+        function deslogar() {
+            window.location.href = "/logout.php";
+        }
+    </script>
 </body>
 
 </html>
