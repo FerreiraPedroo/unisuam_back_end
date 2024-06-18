@@ -2,9 +2,6 @@
 
 $paginaSelecionada = explode("/", $_SERVER["REQUEST_URI"])[1];
 
-echo $paginaSelecionada;
-
-
 ?>
 
 <header id="header-css" class="d-flex flex-column gap-3 pb-4 rounded-bottom-4">
