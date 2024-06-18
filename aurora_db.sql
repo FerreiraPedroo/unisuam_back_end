@@ -245,6 +245,6 @@ VALUES
     80,
     39,
     'TAM',
-    'destinos/chile/001.jpg',
+    'destinos/chile/001.jpg','src/img/destinos/chile/002.jpg','src/img/destinos/chile/003.jpg','src/img/destinos/chile/004.jpg',
     'O Chile oferece o impressionante Deserto do Atacama, um dos lugares mais áridos do planeta, onde a combinação de vastos salares, gêiseres e um céu incrivelmente claro torna a observação das estrelas uma experiência inesquecível.'
   );

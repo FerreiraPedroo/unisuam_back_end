@@ -4,29 +4,8 @@ session_start();
 if (isset($_SESSION["sessao"])) {
     $sessao = $_SESSION["sessao"];
 }
-
-$pdo = new PDO('mysql:host=localhost;dbname=aurora', 'root', '');
-$req = $_REQUEST;
-
-$origem = isset($req["origem"]) ? $req["origem"] : "";
-$destino = isset($req["destino"]) ? $req["destino"] : "";
-
-$query = "";
-$origQuery = $origem ? " WHERE origem='$origem'" : "";
-$destQuery = $destino ? " WHERE destino='$destino'" : "";
-
-if ($origQuery && $destQuery) {
-    $query = "$origQuery AND destino='$destino'";
-} else if ($origQuery) {
-    $query = $origQuery;
-} else if ($destQuery) {
-    $query = $destQuery;
-}
-
-$sql = "SELECT * FROM passagem ";
-$resultado = $pdo->query("$sql $query");
-
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -36,48 +15,186 @@ $resultado = $pdo->query("$sql $query");
     <title>Aurora Tour</title>
     <link href="../src/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../src/styles.css" />
+
+    <style>
+        .carousel-caption {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+
+        .caption-text {
+            background-color: white;
+            color: black;
+            padding: 5px 10px;
+            border-radius: 5px;
+            opacity: 0.8;
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+
+        .carousel-img {
+            width: 100%;
+            height: auto;
+        }
+
+        .body-bg {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+    </style>
 </head>
 
-<body class="d-flex flex-column gap-4">
-    <?php include("../cabecalho.php") ?>
+<body>
+    <?php include('cabecalho.php'); ?>
+
+    <header id="header-css" class="d-flex flex-column gap-3 pb-4 rounded-bottom-4">
+        <!-- <nav class="navbar navbar-expand-lg m-0 p-0">
+            <div class="container-fluid">
+                <a class="data-navbar-title navbar-brand d-flex align-items-center gap-2 p-1 " href="/">
+                    <img src="../../src/img/logo.png" alt="Logo" width="150" height="120" class="d-inline-block align-text-top">
+                    Aurora's Tour
+                </a>
+                <?php
+
+                if (isset($sessao)) {
+                    echo ('<a class="navbar-brand fs-6 d-flex align-items-center gap-2" href="../../usuario.php">');
+                    echo ('<img src="../../src/img/' . $sessao["foto"] . '" alt="User" width="32" height="32" class="d-inline-block align-text-top">');
+                    echo ($sessao["nome"]);
+                    echo ('</a>');
+                } else {
+                    echo ('<a class="navbar-brand fs-6 d-flex align-items-center gap-2" href="../../login.php">');
+                    echo ('<img src="src/img/user.png" alt="User" width="32" height="32" class="d-inline-block align-text-top">');
+                    echo ("Entre ou cadastre-se");
+                    echo ('</a>');
+                }
+                ?>
+
+            </div>
+        </nav> -->
+    </header>
 
     <main>
-        <div class="container d-flex flex-wrap gap-4 justify-content-center">
-            <?php
-            if (!$resultado->rowCount()) {
-                echo "<div class='d-flex flex-column align-items-center'>";
-                echo "<p class='fs-3'>Nenhum registro encontrado</p>";
-                echo "<img class='w-50' src='../src/img/passagens/icons8-airport-100.png' />";
-                echo "</div>";
-            }
-            foreach ($resultado as $value) {
-                $date = new DateTime($value[5]);
-                $date = $date->format('d/m/Y');
-                $foto = explode(",",$value[10])[0];
-                echo ("
-                    <a class='card text-decoration-none' href='passagem.php?id=$value[0]' style='width: 18rem;'>
-                        <img src='../src/img/$foto' class='card-img-top h-50' alt='...'>
-                        <div class='card-body'>
-                            <h5 class='card-title'>$value[1]</h5>
-                            <p class='card-text m-0'>Origem: $value[2]</p>
-                            <p class='card-text m-0'>Destino: $value[3]</p>
-                            <p class='card-text m-0'><img src='../src/img/passagens/icons8-airplane-take-off-50.png' width='25px' class='' alt='...'> $date</p>
-                        </div>
-                    </a>
-                ");
-            }
-            ?>
+        <div class="banners text-center">
+            <span><strong>REALIZE OS SEUS SONHOS</strong></span>
+            <div class="container-fluid d-flex justify-content-center body-bg">
+                <div class="row">
+                    <div class="col-md-6">
+                        <?php
+                        // Função para gerar carrossel
+                        function gerar_carrossel($id, $imagens, $legendas) {
+                            echo "<div id='carouselExample$id' class='carousel slide mb-4' data-bs-ride='carousel'>";
+                            echo "<div class='carousel-inner'>";
+                            foreach ($imagens as $index => $imagem) {
+                                $active = $index === 0 ? "active" : "";
+                                echo "<div class='carousel-item $active'>";
+                                echo "<img src='$imagem' class='d-block w-100 carousel-img' alt='Imagem'>";
+                                echo "<div class='carousel-caption'>";
+                                echo "<p class='caption-text'>{$legendas[$index]}</p>";
+                                echo "</div>";
+                                echo "</div>";
+                            }
+                            echo "</div>";
+                            echo "<ol class='carousel-indicators'>";
+                            foreach ($imagens as $index => $imagem) {
+                                $active = $index === 0 ? "active" : "";
+                                echo "<li data-bs-target='#carouselExample$id' data-bs-slide-to='$index' class='$active'></li>";
+                            }
+                            echo "</ol>";
+                            echo "<button class='carousel-control-prev' type='button' data-bs-target='#carouselExample$id' data-bs-slide='prev'>";
+                            echo "<span class='carousel-control-prev-icon' aria-hidden='true'></span>";
+                            echo "<span class='visually-hidden'>Anterior</span>";
+                            echo "</button>";
+                            echo "<button class='carousel-control-next' type='button' data-bs-target='#carouselExample$id' data-bs-slide='next'>";
+                            echo "<span class='carousel-control-next-icon' aria-hidden='true'></span>";
+                            echo "<span class='visually-hidden'>Próximo</span>";
+                            echo "</button>";
+                            echo "</div>";
+                        }
 
+                        $carrosseis = [
+                            [
+                                "imagens" => [
+                                    "../src/img/carros/Amsterdã/001.png",
+                                    "../src/img/carros/Amsterdã/002.png",
+                                    "../src/img/carros/Amsterdã/003.png"
+                                ],
+                                
+                                "legendas" => ["Aeroporto AMS - Amsterdã"]
+                            ],
+                            [
+                                "imagens" => [
+                                    "../src/img/carros/Chile/001.png",
+                                    "../src/img/carros/Chile/002.png",
+                                    "../src/img/carros/Chile/003.png"
+                                ],
+                                "legendas" => ["Aeroporto SCL - Santiago - Chile"]
+                            ],
+                            [
+                                "imagens" => [
+                                    "../src/img/carros/Grécia/001.png",
+                                    "../src/img/carros/Grécia/002.png",
+                                    "../src/img/carros/Grécia/003.png"
+                                ],
+                                "legendas" => ["Aeroporto ATM - Athenas - Grécia"]
+                            ],
+                            [
+                                "imagens" => [
+                                    "../src/img/carros/Islandia/001.png",
+                                    "../src/img/carros/Islandia/002.png",
+                                    "../src/img/carros/Islandia/003.png"
+                                ],
+                                "legendas" => ["Aeroporto KEF - Keflavik - Islândia"]
+                            ],
+                            [
+                                "imagens" => [
+                                    "../src/img/carros/Paris/001.png",
+                                    "../src/img/carros/Paris/002.png",
+                                    "../src/img/carros/Paris/003.png"
+                                ],
+                                "legendas" => ["Aeroporto CGD - Paris"]
+                            ],
+                            [
+                                "imagens" => [
+                                    "../src/img/carros/Roma/001.png",
+                                    "../src/img/carros/Roma/002.png",
+                                    "../src/img/carros/Roma/003.png"
+                                ],
+                                "legendas" => ["Aeroporto FCO - Itália - Roma"]
+                            ],
+                            [
+                                "imagens" => [
+                                    "../src/img/carros/Turquia/001.png",
+                                    "../src/img/carros/Turquia/002.png",
+                                    "../src/img/carros/Turquia/003.png"
+                                ],
+                                "legendas" => ["Aeroporto IST - Istambul - Turquia"]
+                            ]
+                        ];
+
+                        // Gerar carrosséis
+                        foreach ($carrosseis as $index => $carrossel) {
+                            gerar_carrossel($index, $carrossel['imagens'], $carrossel['legendas']);
+                        }
+                        ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?php
+                        // Gerar novamente carrosséis para a segunda coluna
+                        foreach ($carrosseis as $index => $carrossel) {
+                            gerar_carrossel($index + count($carrosseis), $carrossel['imagens'], $carrossel['legendas']);
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 
-    <script src="../src/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script>
-        const origem = document.getElementById("passagem-input-origem");
-        const destino = document.getElementById("passagem-input-destino");
-        const botaoPesquisarPassagem = document.getElementById("botao-pesquisar-passagem");
-    </script>
 </body>
 
 </html>
