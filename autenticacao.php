@@ -20,18 +20,18 @@ try {
 
         $pdo->exec($sqlLog);
 
-        $_SESSION["2MFA"] = $userId;
+        $_SESSION["ID"] = $userId;
         header("Location: 2MFA.php");
     } else {
         $data = date('d/m/Y H:i');
         $ip = $_SERVER['REMOTE_ADDR'];
-        $acao = "[LOGIN]:FAIL|[USER]:$username|[PASSWORD]:$password";
+        $acao = "[LOGIN]:[FAIL]:user:$username | password:$password";
 
         $sqlLog = "INSERT INTO `log` (`data`,`ip`,`acao`) VALUE('$data','$ip','$acao')";
         $pdo->exec($sqlLog);
 
         $_SESSION["login_msg_error"] = "Usuário ou senha incorreto(s).";
-        header("Location: login2.php");
+        header("Location: login.php");
     }
 } catch (PDOException $e) {
     echo "Erro: " . $e->getMessage();

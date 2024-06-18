@@ -38,7 +38,7 @@ $resultado = $pdo->query("$sql $query");
     <link rel="stylesheet" href="../src/styles.css" />
 </head>
 
-<body class="d-flex flex-column gap-4">
+<body class="d-flex flex-column align-items-center gap-4">
     <?php include("../cabecalho.php") ?>
 
     <main>

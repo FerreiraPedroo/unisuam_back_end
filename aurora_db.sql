@@ -85,7 +85,10 @@ INSERT INTO
     `nome_completo`,
     `login`,
     `email`,
-    `senha`
+    `senha`,
+    `data_nascimento`,
+    `nome_mae`,
+    `cep`
   )
 VALUES
   (
@@ -95,7 +98,10 @@ VALUES
     'Pedro Henrique',
     'master',
     'master@master.com',
-    'master'
+    'master',
+    '1983/05/30',
+    'Maria',
+    '21000-000'
   ),
   (
     '2',
@@ -104,7 +110,10 @@ VALUES
     'Wesley Safadão',
     'wes',
     'wes@master.com',
-    '12345678'
+    '12345678',
+    '1983/05/30',
+    'Maria',
+    '21000-000'
   ),
   (
     '3',
@@ -113,7 +122,10 @@ VALUES
     'Carla Freitas',
     'car',
     'car@master.com',
-    '12345678'
+    '12345678',
+    '1983/05/30',
+    'Maria',
+    '21000-000'
   ),
   (
     '4',
@@ -122,7 +134,10 @@ VALUES
     'Guilherme',
     'gui',
     'gui@master.com',
-    '12345678'
+    '12345678',
+    '1983/05/30',
+    'Maria',
+    '21000-000'    
   ),
   (
     '5',
@@ -131,7 +146,10 @@ VALUES
     'Taiza Reis',
     'master',
     'tai@master.com',
-    'master'
+    'master',
+    '1983/05/30',
+    'Maria',
+    '21000-000'
   );
 
 INSERT INTO
@@ -161,7 +179,7 @@ VALUES
     56,
     30,
     'GOL',
-    'destinos/islandia-aurora-boreal/001.jpg,destinos/islandia-aurora-boreal/002.webp,destinos/islandia-aurora-boreal/003.jpg,destinos/islandia-aurora-boreal/004.webp',
+    'destinos/islandia-aurora-boreal/001.jpg,destinos/islandia-aurora-boreal/002.webp,destinos/islandia-aurora-boreal/004.webp',
     'A Islândia, com sua paisagem inóspita e deslumbrante, é o local perfeito para presenciar a mágica Aurora Boreal, onde o céu se ilumina em uma dança hipnotizante de luzes verdes, rosas e roxas nas longas noites de inverno.'
   ),
   (
@@ -175,7 +193,7 @@ VALUES
     120,
     39,
     'GOL',
-    'destinos/turquia-capadocia/001.jpg,destinos/turquia-capadocia/002.jpg,destinos/turquia-capadocia/003.webp,destinos/turquia-capadocia/004.jpg',
+    'destinos/turquia-capadocia/001.jpg,destinos/turquia-capadocia/003.webp,destinos/turquia-capadocia/004.jpg',
     'A Turquia, por sua vez, encanta na Capadócia, onde balões de ar quente sobrevoam ao amanhecer um cenário surreal de formações rochosas e vales que parecem ter saído de um conto de fadas.'
   ),
   (
@@ -189,7 +207,7 @@ VALUES
     80,
     39,
     'TAM',
-    'destinos/paris/001.webp,destinos/paris/002.jpg,destinos/paris/003.jpg,destinos/paris/004.jpg',
+    'destinos/paris/001.webp,destinos/paris/002.jpg,destinos/paris/003.jpg',
     'Paris, a Cidade Luz, continua a seduzir com sua atmosfera romântica, repleta de marcos icônicos como a Torre Eiffel, o Louvre e charmosos cafés que pontuam suas ruas históricas.'
   ),
   (
@@ -224,14 +242,14 @@ VALUES
     6,
     'Amsterdã',
     'Rio de Janeiro',
-    'msterdã',
+    'Amsterdã',
     '2025-06-03 00:00:00',
     '2024-07-10 00:00:00',
     4500,
     80,
     39,
     'TAM',
-    'destinos/amsterda/001.webp,destinos/amsterda/002.webp,destinos/amsterda/003.webp,destinos/amsterda/004.webp',
+    'destinos/amsterda/001.webp,destinos/amsterda/002.webp,destinos/amsterda/003.webp',
     'Amsterdã, nos Países Baixos, combina história rica e modernidade com seus canais pitorescos, museus renomados como o Rijksmuseum e o Museu Van Gogh, além de uma vibrante cultura de bicicletas que torna a exploração da cidade agradável e sustentável.'
   ),
   (
@@ -245,6 +263,6 @@ VALUES
     80,
     39,
     'TAM',
-    'destinos/chile/001.jpg','src/img/destinos/chile/002.jpg','src/img/destinos/chile/003.jpg','src/img/destinos/chile/004.jpg',
+    'destinos/chile/001.jpg,destinos/chile/003.jpg,destinos/chile/002.jpg',
     'O Chile oferece o impressionante Deserto do Atacama, um dos lugares mais áridos do planeta, onde a combinação de vastos salares, gêiseres e um céu incrivelmente claro torna a observação das estrelas uma experiência inesquecível.'
   );

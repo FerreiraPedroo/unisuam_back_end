@@ -47,34 +47,8 @@ if (isset($_SESSION["sessao"])) {
     </style>
 </head>
 
-<body>
-    <?php include('cabecalho.php'); ?>
-
-    <header id="header-css" class="d-flex flex-column gap-3 pb-4 rounded-bottom-4">
-        <!-- <nav class="navbar navbar-expand-lg m-0 p-0">
-            <div class="container-fluid">
-                <a class="data-navbar-title navbar-brand d-flex align-items-center gap-2 p-1 " href="/">
-                    <img src="../../src/img/logo.png" alt="Logo" width="150" height="120" class="d-inline-block align-text-top">
-                    Aurora's Tour
-                </a>
-                <?php
-
-                if (isset($sessao)) {
-                    echo ('<a class="navbar-brand fs-6 d-flex align-items-center gap-2" href="../../usuario.php">');
-                    echo ('<img src="../../src/img/' . $sessao["foto"] . '" alt="User" width="32" height="32" class="d-inline-block align-text-top">');
-                    echo ($sessao["nome"]);
-                    echo ('</a>');
-                } else {
-                    echo ('<a class="navbar-brand fs-6 d-flex align-items-center gap-2" href="../../login.php">');
-                    echo ('<img src="src/img/user.png" alt="User" width="32" height="32" class="d-inline-block align-text-top">');
-                    echo ("Entre ou cadastre-se");
-                    echo ('</a>');
-                }
-                ?>
-
-            </div>
-        </nav> -->
-    </header>
+<body class="d-flex flex-column align-items-center gap-4">
+    <?php include('../cabecalho.php'); ?>
 
     <main>
         <div class="banners text-center">

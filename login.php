@@ -23,7 +23,7 @@ if (isset($_SESSION["login_msg_error"])) {
 
 <body>
     <div class="container d-flex justify-content-center align-items-center vh-100 ">
-        <div class="card p-4 shadow p-3 mb-5 rounded" id="header-css">
+        <div class="card w-50 p-4 shadow p-3 mb-5 rounded" id="header-css">
             <div class="mx-auto text-center">
                 <a href="index.php"><img src="./src/img/logo.png" alt="LogoAurora" width="150px" height="100px"></a>
             </div>
