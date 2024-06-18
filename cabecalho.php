@@ -8,8 +8,7 @@ $paginaSelecionada = explode("/", $_SERVER["REQUEST_URI"])[1];
     <nav class="navbar navbar-expand-lg m-0 p-0">
         <div class="container-fluid">
             <a class="data-navbar-title navbar-brand d-flex align-items-center gap-2 p-1 " href="/">
-                <img src="../../src/img/logo.png" alt="Logo" width="58" height="40"
-                    class="d-inline-block align-text-top">
+                <img src="../../src/img/logo.png" alt="Logo" width="58" height="40" class="d-inline-block align-text-top">
                 Aurora's Tour
             </a>
 
@@ -34,8 +33,7 @@ $paginaSelecionada = explode("/", $_SERVER["REQUEST_URI"])[1];
     <nav class="bg-white d-flex flex-column justify-content-center w-auto mx-5 p-1 border rounded-3 gap-3">
         <ul class="navbar-nav d-flex flex-row justify-content-center gap-5">
             <li class="nav-item">
-                <a class="nav-link d-flex flex-column align-items-center" aria-current="page"
-                    href="./viagens/index.php">
+                <a class="nav-link d-flex flex-column align-items-center" aria-current="page" href="./viagens/index.php">
                     <img src="../src/img/Viagem.png" alt="Viagens" width="36" height="36">
                     <strong> Viagens </strong>
                 </a>
@@ -67,8 +65,7 @@ $paginaSelecionada = explode("/", $_SERVER["REQUEST_URI"])[1];
         </ul>
 
         <?php
-
-        if($paginaSelecionada == "viagens"){
+        if ($paginaSelecionada == "viagens") {
             $origens = array(
                 "Selecione...",
                 "Galeão - RJ",
@@ -89,7 +86,7 @@ $paginaSelecionada = explode("/", $_SERVER["REQUEST_URI"])[1];
                 "Amsterdã"
             );
 
-        echo `<div id="origens-procurar" class="container text-center">
+            echo `<div id="origens-procurar" class="container text-center">
             <form method="get" action="#">
                 <div class="d-flex gap-4 w-100">
                     <div class="d-flex flex-row align-items-center gap-4 w-100">
@@ -97,10 +94,10 @@ $paginaSelecionada = explode("/", $_SERVER["REQUEST_URI"])[1];
                             <label class="input-group-text" for="Viagens-input-origem">Origem</label>
                             <select class="form-select" id="Viagens-input-origem">`;
 
-                                foreach ($origens as $origem) {
-                                    echo "<option value=\"$origem\">$origem</option>";
-                                }
-        echo `
+            foreach ($origens as $origem) {
+                echo "<option value=\"$origem\">$origem</option>";
+            }
+            echo `
                             </select>
                         </div>
                     </div>
@@ -108,12 +105,12 @@ $paginaSelecionada = explode("/", $_SERVER["REQUEST_URI"])[1];
                         <div class="input-group mb-3">
                             <label class="input-group-text" for="Viagens-input-Destino">Destino</label>
                             <select class="form-select" id="Viagens-input-Destino">`;
-                            
-                            foreach ($destinos as $destino) {
-                                echo "<option value=\"$destino\">$destino</option>";
-                            }
 
-                            echo `
+            foreach ($destinos as $destino) {
+                echo "<option value=\"$destino\">$destino</option>";
+            }
+
+            echo `
                             </select>
                         </div>
                     </div>
@@ -121,9 +118,6 @@ $paginaSelecionada = explode("/", $_SERVER["REQUEST_URI"])[1];
                 <button type="submit" class="btn btn-primary mb-3">Procurar Destino</button>
             </form>
         </div>`;
-    }
-    ?>
-
-
+        }  ?>
     </nav>
 </header>

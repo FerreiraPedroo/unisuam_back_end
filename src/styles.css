@@ -2,9 +2,14 @@ body {
   background-color: rgb(246, 246, 242);
 }
 
-#conteiner{
-  background-color: #f5f506
-}  
+#conteiner {
+  background-color: #f5f506;
+}
+
+#header-css {
+  background-color: tomato;
+  width: 95%;
+}
 
 .data-navbar-title {
   font-size: 200x;
@@ -39,15 +44,14 @@ body {
 }
 
 .img-top {
-  max-width:600px !important;
-  width:600px !important;
-  height:500px !important;
+  max-width: 600px !important;
+  width: 600px !important;
+  height: 500px !important;
 }
-
 
 .scrollable-screen {
   overflow-y: scroll;
-  scrollbar-color: #1c08ff, #f6fa03; 
+  scrollbar-color: #1c08ff, #f6fa03;
   scrollbar-width: thin;
 }
 ::-webkit-scrollbar {

@@ -4,6 +4,7 @@ session_start();
 if (isset($_SESSION["sessao"])) {
     $sessao = $_SESSION["sessao"];
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -14,9 +15,10 @@ if (isset($_SESSION["sessao"])) {
     <meta name="viewport" content="width=device-width, initial-scale=2.0">
     <title>Aurora Tour</title>
     <link href="../src/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../src/styles.css" />
+    <link rel="stylesheet" href="./src/styles.css" />
 </head>
-<header id="header-css" class="d-flex flex-column gap-3 pb-4 rounded-bottom-4">
+
+<body class="d-flex flex-column align-items-center">
     <!-- <nav class="navbar navbar-expand-lg m-0 p-0">
         <div class="container-fluid">
             <a class="data-navbar-title navbar-brand d-flex align-items-center gap-2 p-1 " href="/">
@@ -87,40 +89,40 @@ if (isset($_SESSION["sessao"])) {
             echo '</div>';
             ?>
             <div class="container-fluid d-flex justify-content-center body-bg">
-                <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" style="width: 40%;">
-                    <div class="carousel-inner ">
+                <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" style="width: 60%;">
+                    <div class="carousel-inner " style="height: 480px;">
                         <div class="carousel-item active">
                             <img src="src/img/destinos/amsterda/001.webp" class="d-block w-100 carousel-img" alt="Imagem de Amsterdã 1">
                             <div class="carousel-caption">
                                 <p class="caption-text">Amsterdã</p>
                             </div>
                         </div>
-                        <div class="carousel-item">
-                            <img src="src/img/destinos/turquia-capadocia/001.jpg" class="d-block w-100 carousel-img" alt="Imagem da Capadócia 1">
+                        <div class="carousel-item h-100">
+                            <img src="src/img/destinos/turquia-capadocia/001.jpg" class="d-block w-100 h-100 carousel-img" alt="Imagem da Capadócia 1">
                             <div class="carousel-caption">
                                 <p class="caption-text">Capadócia</p>
                             </div>
                         </div>
-                        <div class="carousel-item">
-                            <img src="src/img/destinos/paris/003.jpg" class="d-block w-100 carousel-img" alt="Imagem de Paris 1">
+                        <div class="carousel-item h-100">
+                            <img src="src/img/destinos/paris/003.jpg" class="d-block w-100 h-100 carousel-img" alt="Imagem de Paris 1">
                             <div class="carousel-caption">
                                 <p class="caption-text">Paris</p>
                             </div>
                         </div>
-                        <div class="carousel-item">
-                            <img src="src/img/destinos/grecia-santorini/003.avif" class="d-block w-100 carousel-img" alt="Imagem de Santorini 1">
+                        <div class="carousel-item h-100">
+                            <img src="src/img/destinos/grecia-santorini/003.avif" class="d-block w-100 h-100 carousel-img" alt="Imagem de Santorini 1">
                             <div class="carousel-caption">
                                 <p class="caption-text">Santorini</p>
                             </div>
                         </div>
-                        <div class="carousel-item">
-                            <img src="src/img/destinos/chile/001.jpg" class="d-block w-100 carousel-img" alt="Imagem do Chile 1">
+                        <div class="carousel-item h-100">
+                            <img src="src/img/destinos/chile/001.jpg" class="d-block w-100 h-100 carousel-img" alt="Imagem do Chile 1">
                             <div class="carousel-caption">
                                 <p class="caption-text">Chile</p>
                             </div>
                         </div>
-                        <div class="carousel-item">
-                            <img src="src/img/destinos/islandia-aurora-boreal/002.webp" class="d-block w-100 carousel-img" alt="Imagem da Aurora Boreal 1">
+                        <div class="carousel-item h-100">
+                            <img src="src/img/destinos/islandia-aurora-boreal/002.webp" class="d-block w-100 h-100 carousel-img" alt="Imagem da Aurora Boreal 1">
                             <div class="carousel-caption">
                                 <p class="caption-text">Aurora Boreal</p>
                             </div>
@@ -128,12 +130,12 @@ if (isset($_SESSION["sessao"])) {
                     </div>
 
                     <ol class="carousel-indicators">
-                        <li data-bs-target="#carouselExample" data-bs-slide-to="0" class="active"></li>
-                        <li data-bs-target="#carouselExample" data-bs-slide-to="1"></li>
-                        <li data-bs-target="#carouselExample" data-bs-slide-to="2"></li>
-                        <li data-bs-target="#carouselExample" data-bs-slide-to="3"></li>
-                        <li data-bs-target="#carouselExample" data-bs-slide-to="4"></li>
-                        <li data-bs-target="#carouselExample" data-bs-slide-to="5"></li>
+                        <li data-bs-target="#carouselExample" style="color: transparent;" data-bs-slide-to="0" class="active"></li>
+                        <li data-bs-target="#carouselExample" style="color: transparent;" data-bs-slide-to="1"></li>
+                        <li data-bs-target="#carouselExample" style="color: transparent;" data-bs-slide-to="2"></li>
+                        <li data-bs-target="#carouselExample" style="color: transparent;" data-bs-slide-to="3"></li>
+                        <li data-bs-target="#carouselExample" style="color: transparent;" data-bs-slide-to="4"></li>
+                        <li data-bs-target="#carouselExample" style="color: transparent;" data-bs-slide-to="5"></li>
                     </ol>
 
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -173,6 +175,6 @@ if (isset($_SESSION["sessao"])) {
                 const botaoPesquisarPassagem = document.getElementById("botao-pesquisar-passagem");
             </script>
 
-            </body>
+</body>
 
 </html>
