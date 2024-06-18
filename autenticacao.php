@@ -11,29 +11,17 @@ try {
     $resultado = $pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
 
     if ($resultado) {
-        $nome = explode(" ", $resultado["nome_completo"]);
-
-        if (count($nome) >= 2) {
-            $userInfo = ["nome" => $nome[0] . " " . $nome[1]];
-        } else {
-            $userInfo = ["nome" => $nome[0]];
-        }
-
-        $userInfo["foto"] = $resultado["foto"];
-        $userInfo["usuario_master"] = $resultado["usuario_master"];
-
         $data = date('d/m/Y H:i');
         $ip = $_SERVER['REMOTE_ADDR'];
         $userId = $resultado["id"];
-        $acao = "[LOGIN]:SUCCESS";
+        $acao = "[LOGIN]:USER/PASS OK";
 
         $sqlLog = "INSERT INTO `log` (`usuario_id`,`data`,`ip`,`acao`) VALUE('$userId','$data','$ip','$acao')";
 
         $pdo->exec($sqlLog);
 
-        $_SESSION["sessao"] = $userInfo;
-        header("Location: index.php");
-
+        $_SESSION["2MFA"] = $userId;
+        header("Location: 2MFA.php");
     } else {
         $data = date('d/m/Y H:i');
         $ip = $_SERVER['REMOTE_ADDR'];
@@ -43,7 +31,7 @@ try {
         $pdo->exec($sqlLog);
 
         $_SESSION["login_msg_error"] = "Usuário ou senha incorreto(s).";
-        header("Location: login.php");
+        header("Location: login2.php");
     }
 } catch (PDOException $e) {
     echo "Erro: " . $e->getMessage();
