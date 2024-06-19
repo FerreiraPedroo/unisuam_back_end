@@ -1,9 +1,12 @@
 body {
   background-color: rgb(246, 246, 242);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #conteiner {
-  background-color: #f5f506;
+  background-color: tomato;
 }
 
 #header-css {
@@ -34,10 +37,12 @@ body {
   min-width: 64px !important;
   max-width: 64px !important;
 }
+
 .coluna-usuario-info-nome {
   min-width: 256px !important;
   max-width: 256px !important;
 }
+
 .coluna-usuario-info-usuario-master {
   min-width: 228px !important;
   max-width: 228px !important;
@@ -54,15 +59,116 @@ body {
   scrollbar-color: #1c08ff, #f6fa03;
   scrollbar-width: thin;
 }
+
 ::-webkit-scrollbar {
-  width: 16px; /* Largura da barra de rolagem */
+  width: 16px;
+  /* Largura da barra de rolagem */
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #eeff02; /* Cor de fundo da barra de rolagem */
+  background-color: #eeff02;
+  /* Cor de fundo da barra de rolagem */
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #057ce3; /* Cor da alça da barra de rolagem */
-  border-radius: 10px; /* Raio da borda da alça */
+  background-color: #057ce3;
+  /* Cor da alça da barra de rolagem */
+  border-radius: 10px;
+  /* Raio da borda da alça */
+}
+
+
+#log-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+#log-user-info {
+  width: 480px;
+  display: flex;
+  padding: 16px;
+  gap: 10px;
+  border: 2px solid #555;
+  border-radius: 8px;
+}
+
+#log-user-img {
+  width: 128px;
+  height: 128px;
+}
+
+#log-user-name {
+  font-size: 20px;
+  color: darkblue;
+}
+
+#log-user-status {
+  font-size: 18px;
+}
+
+#log-user-status-active {
+  color: green;
+}
+
+#log-user-status-inactive {
+  color: red;
+}
+
+#log-text {
+  width: 100%;
+  padding: 6px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#log-head-container {
+  width: 80%;
+  place-items: center;
+}
+
+#log-head {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  color: #FFF;
+  background-color: #20124d;
+  border: 1px solid #000;
+}
+
+.log-data-list {
+  width: 100%;
+  height: 32px;
+  display: flex;
+  padding: 6px 0;
+  place-items: center;
+  gap: 10px;
+  background-color: #EEE;
+  border: 1px solid #000;
+  border-top: 0;
+}
+
+.log-data-1 {
+  width: 256px;
+  text-align: center;
+  padding: 4px;
+}
+
+.log-data-2 {
+  width: 64px;
+  padding: 4px;
+  text-align: center;
+}
+
+.log-data-3 {
+  width: 480px;
+  text-align: center;
+  padding: 4px;
+}
+
+.log-data-4 {
+  width: 96px;
+  padding: 4px;
 }
