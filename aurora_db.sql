@@ -265,4 +265,12 @@ VALUES
     'TAM',
     'destinos/chile/001.jpg,destinos/chile/003.jpg,destinos/chile/002.jpg',
     'O Chile oferece o impressionante Deserto do Atacama, um dos lugares mais áridos do planeta, onde a combinação de vastos salares, gêiseres e um céu incrivelmente claro torna a observação das estrelas uma experiência inesquecível.'
-  );
+  ),
+
+  INSERT INTO ingresso (titulo, local, evento, preco, data, descricao, fotos)
+SELECT titulo, origem AS local, destino AS evento, preco, data, descricao, fotos
+FROM passagem;
+
+INSERT INTO ingresso (titulo, local, evento, preco, data, descricao, fotos) VALUES
+('Deserto do Atacama', 'Casa da Moneda', 'Vale Nevado', 500.00, '2024-09-15', 'Passeios inesquecíveis na cidade do Chile.src/img/ingressos/001.png','src/img/ingressos/002 atacama.png','src/img/ingressos/casadamoeda.png'),
+('Europa', 'src/img/ingressos/Capelasistina.png', 'src/img/ingressos/CasadeJulieta.png','src/img/ingressos/Fontana.png', 'src/img/ingressos/ilhaSantorini.png','src/img/ingressos/Mykonos.png','src/img/ingressos/TemplodeZeus.png', 'src/img/ingressos/Mykonos.png', 1.000.00, '2024-07-21', 'Uma Europa que você pode conhecer da forma mais linda e inesquecível durante sua viagem.'),

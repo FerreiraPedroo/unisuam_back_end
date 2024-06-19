@@ -38,7 +38,7 @@ $resultado = $pdo->query("$sql $query");
     <link rel="stylesheet" href="../src/styles.css" />
 </head>
 
-<body class="d-flex flex-column gap-4">
+<body class="d-flex flex-column align-items-center gap-4">
     <?php include("../cabecalho.php") ?>
 
     <main>
@@ -55,7 +55,7 @@ $resultado = $pdo->query("$sql $query");
                 $date = $date->format('d/m/Y');
                 $foto = explode(",",$value[10])[0];
                 echo ("
-                    <a class='card text-decoration-none' href='passagem.php?id=$value[0]' style='width: 18rem;'>
+                    <a class='card text-decoration-none' href='../passagens/passagem.php?id=$value[0]' style='width: 18rem;'>
                         <img src='../src/img/$foto' class='card-img-top h-50' alt='...'>
                         <div class='card-body'>
                             <h5 class='card-title'>$value[1]</h5>

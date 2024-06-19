@@ -15,7 +15,6 @@ if (isset($_SESSION["sessao"])) {
     <title>Aurora Tour</title>
     <link href="../src/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../src/styles.css" />
-
     <style>
         .carousel-caption {
             position: absolute;
@@ -44,6 +43,20 @@ if (isset($_SESSION["sessao"])) {
             background-color: #f8f9fa;
             padding: 20px;
         }
+
+        .carousel-item {
+            height: 500px;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .carousel-indicators {
+            display: none;
+        }
     </style>
 </head>
 
@@ -52,31 +65,103 @@ if (isset($_SESSION["sessao"])) {
 
     <main>
         <div class="banners text-center">
-            <span><strong>REALIZE OS SEUS SONHOS</strong></span>
+            <span><strong>ESCOLHA O CARRO QUE OFEREÇA MAIS CONFORTO EM SUA VIAGEM</strong></span>
             <div class="container-fluid d-flex justify-content-center body-bg">
-                <div class="row">
-                    <div class="col-md-6">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <!-- Adicionando a Tabela com as funcionalidades -->
+                        <div class="container my-4">
+                            <div class="row mb-3">
+                            <div class="col">
+                            <label for="searchAirport" class="form-label">PESQUISAR AEROPORTOS</label>
+                            <select class="form-select" id="chosenaiport">
+                                <option selected>PESQUISAR...</option>
+                                <option value="1">AMS - AMSTERDÃ - HOLANDA</option>
+                                <option value="2">SCL - SANTIAGO - CHILE</option>
+                                <option value="3">ATM - ATHENAS - GRÉCIA</option>
+                                <option value="4">KEF - KEFLAVIK - ISLÂNDIA</option>
+                                <option value="5">CGD - PARIS - FRANÇA</option>
+                                <option value="6">FCO - ROMA - ITÁLIA</option>
+                                <option value="7">IST - ISTAMBUL - TURQUIA</option>
+                            </select>
+                        </div>
+
+                                <div class="col">
+                                <label for="chosenprice" type="number" class="form-label">PREÇO
+                                </label>
+                                <select class="form-select" id="chosenprice">
+                                    <option selected>PESQUISAR...</option>
+                                    <option value="1"><R1>R$ 613,96</R1> - TOYOTA C-HR - AMSTERDÃ</option>
+                                    <option value="2"><R1>R$ 890,13</R1> - BMW 1 SÉRIE AUTO. - AMSTERDÃ</option>
+                                    <option value="3"><R1>R$ 764,48</R1> - OPEL CORSA - AMSTERDÃ</option>
+                                    <option value="4"><R1>R$ 181,10</R1> - VW GOL - CHILE</option>
+                                    <option value="5"><R1>R$ 218,30</R1> - HYUNDAI ACCENT - CHILE</option>
+                                    <option value="6"><R1>R$ 273,22</R1> - OPEL CORSA MT BENCINE - CHILE</option>
+                                    <option value="7"><R1>R$ 369,38</R1> - AUDI A3 - GRÉCIA</option>
+                                    <option value="8"><R1>R$ 93,11</R1> - SKODA CITIGO - GRÉCIA (150KM/DIA)</option>
+                                    <option value="9"><R1>R$ 323,22</R1> - KIA PICANTO- GRÉCIA</option>
+                                    <option value="10"><R1>R$ 1.045,49</R1> - TOYOTA YARIS - ISLÂNDIA</option>
+                                    <option value="11"><R1>R$ 1.141,75</R1> - SUZUKI SWIFT - ISLÂNDIA</option>
+                                    <option value="12"><R1>R$ 1.072,00</R1> - TOYOTA AYGO X - ISLÂNDIA</option>
+                                    <option value="13"><R1>R$ 641,28</R1> - RENAULT CAPTUR - PARIS</option>
+                                    <option value="14"><R1>R$ 592,84</R1> - PPEUGEOT E-2008 - PARIS</option>
+                                    <option value="15"><R1>R$ 710,97</R1> - POPEL MOKKA - PARIS</option>
+                                    <option value="16"><R1>R$ 647,48</R1> - FIAT 500 - ITÁLIA</option>
+                                    <option value="17"><R1>R$ 100,76</R1> - AUDI 3 - ITÁLIA</option>
+                                    <option value="18"><R1>R$ 257,98</R1> - TOYOTA AYGO - ITÁLIA</option>
+                                    <option value="19"><R1>R$ 499,04</R1> - HYUNDAI I10 - TURQUIA</option>
+                                    <option value="20"><R1>R$ 765,34</R1> - FIAT PANDA - TURQUIA</option>
+                                    <option value="21"><R1>R$ 259,70</R1> - HYUNDAI I10 - TURQUIA (150KM/DIA)</option>
+                                </select>
+                            </div>
+
+                                <div class="col">
+                                    <label for="date" class="form-label">DATA</label>
+                                    <input type="date" class="form-control" id="date">
+                                </div>
+                                <div class="col">
+                                    <label for="chosenCar" class="form-label">ESCOLHA O SEU CARRO</label>
+                                    <select class="form-select" id="chosenCar">
+                                        <option selected>PESQUISAR...</option>
+                                        <option value="1" >TOYOTA C-HR - AMSTERDÃ</option>
+                                        <option value="2" >BMW 1 SÉRIE AUTO. - AMSTERDÃ</option>
+                                        <option value="3" >OPEL CORSA - AMSTERDÃ</option>
+                                        <option value="4" >VW GOL - CHILE</option>
+                                        <option value="5" >HYUNDAI ACCENT - CHILE</option>
+                                        <option value="6" >OPEL CORSA MT BENCINE - CHILE</option>
+                                        <option value="7" >AUDI A3 - GRÉCIA</option>
+                                        <option value="8" >SKODA CITIGO - GRÉCIA (150KM/DIA)</option>
+                                        <option value="9" >KIA PICANTO- GRÉCIA</option>
+                                        <option value="10">TOYOTA YARIS - ISLÂNDIA</option>
+                                        <option value="11">SUZUKI SWIFT - ISLÂNDIA</option>
+                                        <option value="12">TOYOTA AYGO X - ISLÂNDIA</option>
+                                        <option value="13">RENAULT CAPTUR - PARIS</option>
+                                        <option value="14">PEUGEOT E-2008 - PARIS</option>
+                                        <option value="15">OPEL MOKKA - PARIS</option>
+                                        <option value="16">FIAT 500 - ITÁLIA</option>
+                                        <option value="17">AUDI 3 - ITÁLIA</option>
+                                        <option value="18">TOYOTA AYGO - ITÁLIA</option>
+                                        <option value="19">HYUNDAI I10 - TURQUIA</option>
+                                        <option value="20">FIAT PANDA - TURQUIA</option>
+                                        <option value="21">HYUNDAI I10 - TURQUIA (150KM/DIA)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
                         <?php
                         // Função para gerar carrossel
-                        function gerar_carrossel($id, $imagens, $legendas) {
-                            echo "<div id='carouselExample$id' class='carousel slide mb-4' data-bs-ride='carousel'>";
+                        function gerar_carrossel($id, $imagens, $legenda) {
+                            echo "<h3 class='mt-4 mb-2'>$legenda</h3>"; // Título do carrossel
+                            echo "<div id='carouselExample$id' class='carousel slide mb-4'>";
                             echo "<div class='carousel-inner'>";
                             foreach ($imagens as $index => $imagem) {
                                 $active = $index === 0 ? "active" : "";
                                 echo "<div class='carousel-item $active'>";
-                                echo "<img src='$imagem' class='d-block w-100 carousel-img' alt='Imagem'>";
-                                echo "<div class='carousel-caption'>";
-                                echo "<p class='caption-text'>{$legendas[$index]}</p>";
-                                echo "</div>";
+                                echo "<img src='$imagem' class='d-block w-100' alt='Imagem'>";
                                 echo "</div>";
                             }
                             echo "</div>";
-                            echo "<ol class='carousel-indicators'>";
-                            foreach ($imagens as $index => $imagem) {
-                                $active = $index === 0 ? "active" : "";
-                                echo "<li data-bs-target='#carouselExample$id' data-bs-slide-to='$index' class='$active'></li>";
-                            }
-                            echo "</ol>";
                             echo "<button class='carousel-control-prev' type='button' data-bs-target='#carouselExample$id' data-bs-slide='prev'>";
                             echo "<span class='carousel-control-prev-icon' aria-hidden='true'></span>";
                             echo "<span class='visually-hidden'>Anterior</span>";
@@ -95,8 +180,7 @@ if (isset($_SESSION["sessao"])) {
                                     "../src/img/carros/Amsterdã/002.png",
                                     "../src/img/carros/Amsterdã/003.png"
                                 ],
-                                
-                                "legendas" => ["Aeroporto AMS - Amsterdã"]
+                                "legenda" => "Aeroporto AMS - Amsterdã"
                             ],
                             [
                                 "imagens" => [
@@ -104,7 +188,7 @@ if (isset($_SESSION["sessao"])) {
                                     "../src/img/carros/Chile/002.png",
                                     "../src/img/carros/Chile/003.png"
                                 ],
-                                "legendas" => ["Aeroporto SCL - Santiago - Chile"]
+                                "legenda" => "Aeroporto SCL - Santiago - Chile"
                             ],
                             [
                                 "imagens" => [
@@ -112,7 +196,7 @@ if (isset($_SESSION["sessao"])) {
                                     "../src/img/carros/Grécia/002.png",
                                     "../src/img/carros/Grécia/003.png"
                                 ],
-                                "legendas" => ["Aeroporto ATM - Athenas - Grécia"]
+                                "legenda" => "Aeroporto ATM - Athenas - Grécia"
                             ],
                             [
                                 "imagens" => [
@@ -120,7 +204,7 @@ if (isset($_SESSION["sessao"])) {
                                     "../src/img/carros/Islandia/002.png",
                                     "../src/img/carros/Islandia/003.png"
                                 ],
-                                "legendas" => ["Aeroporto KEF - Keflavik - Islândia"]
+                                "legenda" => "Aeroporto KEF - Keflavik - Islândia"
                             ],
                             [
                                 "imagens" => [
@@ -128,7 +212,7 @@ if (isset($_SESSION["sessao"])) {
                                     "../src/img/carros/Paris/002.png",
                                     "../src/img/carros/Paris/003.png"
                                 ],
-                                "legendas" => ["Aeroporto CGD - Paris"]
+                                "legenda" => "Aeroporto CGD - Paris"
                             ],
                             [
                                 "imagens" => [
@@ -136,7 +220,7 @@ if (isset($_SESSION["sessao"])) {
                                     "../src/img/carros/Roma/002.png",
                                     "../src/img/carros/Roma/003.png"
                                 ],
-                                "legendas" => ["Aeroporto FCO - Itália - Roma"]
+                                "legenda" => "Aeroporto FCO - Itália - Roma"
                             ],
                             [
                                 "imagens" => [
@@ -144,21 +228,13 @@ if (isset($_SESSION["sessao"])) {
                                     "../src/img/carros/Turquia/002.png",
                                     "../src/img/carros/Turquia/003.png"
                                 ],
-                                "legendas" => ["Aeroporto IST - Istambul - Turquia"]
+                                "legenda" => "Aeroporto IST - Istambul - Turquia"
                             ]
                         ];
 
                         // Gerar carrosséis
                         foreach ($carrosseis as $index => $carrossel) {
-                            gerar_carrossel($index, $carrossel['imagens'], $carrossel['legendas']);
-                        }
-                        ?>
-                    </div>
-                    <div class="col-md-6">
-                        <?php
-                        // Gerar novamente carrosséis para a segunda coluna
-                        foreach ($carrosseis as $index => $carrossel) {
-                            gerar_carrossel($index + count($carrosseis), $carrossel['imagens'], $carrossel['legendas']);
+                            gerar_carrossel($index, $carrossel['imagens'], $carrossel['legenda']);
                         }
                         ?>
                     </div>
@@ -168,7 +244,6 @@ if (isset($_SESSION["sessao"])) {
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 
 </html>

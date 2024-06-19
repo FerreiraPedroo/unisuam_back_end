@@ -3,8 +3,9 @@ $pdo = new PDO('mysql:host=localhost;dbname=aurora', 'root', '');
 $req = $_REQUEST;
 
 $id = isset($req["id"]) ? $req["id"] : "";
-$sql = "SELECT * FROM ingresso WHERE id='$id'";
-$resultado = $pdo->query($sql);
+$sql = "SELECT * FROM passagem WHERE id='$id'";
+$resultado = $pdo->query($sql)
+
 ?>
 
 <!DOCTYPE html>
@@ -26,8 +27,8 @@ $resultado = $pdo->query($sql);
             <?php
             if (!$id || !$resultado->rowCount()) {
                 echo "<div class='d-flex flex-column align-items-center'>";
-                echo "<p class='fs-3'>Ingresso não encontrado</p>";
-                echo "<img class='w-50' src='../src/img/ingressos/waiting-room.png' />";
+                echo "<p class='fs-3'>Passagem não encontrada</p>";
+                echo "<img class='w-50' src='../src/img/passagens/waiting-room.png' />";
                 echo "</div>";
             }
 
@@ -49,9 +50,9 @@ $resultado = $pdo->query($sql);
                         <div class='card-body d-flex flex-column gap-2'>
                             <h5 class='card-title'>$value[1]</h5>
                             <p class='card-text m-0'>Descrição: $value[11]</p>
-                            <p class='card-text m-0'>Local: $value[2]</p>
-                            <p class='card-text m-0'>Evento: $value[3]</p>
-                            <p class='card-text m-0'><img src='../src/img/ingressos/icons8-ticket-50.png' width='25px' class='' alt='...'> $date</p>
+                            <p class='card-text m-0'>Origem: $value[2]</p>
+                            <p class='card-text m-0'>Destino: $value[3]</p>
+                            <p class='card-text m-0'><img src='../src/img/passagens/icons8-airplane-take-off-50.png' width='25px' class='' alt='...'> $date</p>
                         </div>
 
                     </div>
@@ -65,4 +66,3 @@ $resultado = $pdo->query($sql);
 </body>
 
 </html>
-
