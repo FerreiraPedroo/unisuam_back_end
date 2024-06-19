@@ -1,11 +1,11 @@
 <?php
 session_start();
-$loged = isset($_SESSION['loged']);
+$loged = isset($_SESSION['loged']) ? $_SESSION['loged'] : 0;
 if ($loged) {
     header("Location: index.php");
 }
 
-$userId = isset($_SESSION['ID']);
+$userId = isset($_SESSION['ID']) ? $_SESSION['ID'] : 0;
 
 $mfa2DataNomeMae = isset($_POST["NomeMae"]) ? $_POST["NomeMae"] : 0;
 $mfa2DataDataNascimento = isset($_POST["DataNascimento"]) ? $_POST["DataNascimento"] : 0;
@@ -46,7 +46,7 @@ function findUser($userId)
         $ip = $_SERVER['REMOTE_ADDR'];
         $acao = "[LOGIN]:[2MFA ERROR]: USUARIO NÃO ENCONTRADO";
 
-        $sqlLog = "INSERT INTO `log` (`data`,`ip`,`acao`) VALUE('$data','$ip','$acao')";
+        $sqlLog = "INSERT INTO `logger` (`data`,`ip`,`acao`) VALUE('$data','$ip','$acao')";
         $pdo->exec($sqlLog);
     }
 
@@ -62,7 +62,7 @@ function logger($userId, $key, $value)
     $ip = $_SERVER['REMOTE_ADDR'];
     $acao = "[LOGIN]:[2MFA ERROR]: $key : $value";
 
-    $sqlLog = "INSERT INTO `log` (`usuario_id`,`data`,`ip`,`acao`) VALUE('$userId','$data','$ip','$acao')";
+    $sqlLog = "INSERT INTO `logger` (`usuario_id`,`data`,`ip`,`acao`) VALUE('$userId','$data','$ip','$acao')";
     $pdo->exec($sqlLog);
 }
 
@@ -85,7 +85,7 @@ function login($resultado)
     $userId = $resultado["id"];
     $acao = "[LOGIN]:[2MFA]:SUCCESS";
 
-    $sqlLog = "INSERT INTO `log` (`usuario_id`,`data`,`ip`,`acao`) VALUE('$userId','$data','$ip','$acao')";
+    $sqlLog = "INSERT INTO `logger` (`usuario_id`,`data`,`ip`,`acao`) VALUE('$userId','$data','$ip','$acao')";
 
     $pdo->exec($sqlLog);
 

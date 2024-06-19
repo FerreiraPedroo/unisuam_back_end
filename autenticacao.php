@@ -16,7 +16,7 @@ try {
         $userId = $resultado["id"];
         $acao = "[LOGIN]:USER/PASS OK";
 
-        $sqlLog = "INSERT INTO `log` (`usuario_id`,`data`,`ip`,`acao`) VALUE('$userId','$data','$ip','$acao')";
+        $sqlLog = "INSERT INTO `logger` (`usuario_id`,`data`,`ip`,`acao`) VALUE('$userId','$data','$ip','$acao')";
 
         $pdo->exec($sqlLog);
 
@@ -27,7 +27,7 @@ try {
         $ip = $_SERVER['REMOTE_ADDR'];
         $acao = "[LOGIN]:[FAIL]:user:$username | password:$password";
 
-        $sqlLog = "INSERT INTO `log` (`data`,`ip`,`acao`) VALUE('$data','$ip','$acao')";
+        $sqlLog = "INSERT INTO `logger` (`data`,`ip`,`acao`) VALUE('$data','$ip','$acao')";
         $pdo->exec($sqlLog);
 
         $_SESSION["login_msg_error"] = "Usuário ou senha incorreto(s).";

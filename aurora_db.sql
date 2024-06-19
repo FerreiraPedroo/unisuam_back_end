@@ -68,7 +68,7 @@ CREATE TABLE `usuarios_cookies` (
   PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `log` (
+CREATE TABLE `logger` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `usuario_id` INT NULL,
   `data` VARCHAR(20) NOT NULL,
