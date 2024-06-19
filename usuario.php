@@ -8,13 +8,22 @@ if (isset($_SESSION["sessao"])) {
 };
 
 $paginaSelecionada = "";
-
 if (isset($_GET["pagina"])) {
     $paginaSelecionada = $_GET["pagina"];
 } else {
     $paginaSelecionada = "inicio";
 };
 
+$userId = 0;
+$userLog = "";
+if (isset($_GET["id"]) && $paginaSelecionada == "usuario-log") {
+    $userId = $_GET["id"];
+    $pdo = new PDO('mysql:host=localhost;dbname=aurora', 'root', '');
+    $sql = "SELECT * FROM logger WHERE id=".$userId;
+    $userLog = $pdo->query($sql);
+    $sql = "SELECT * FROM usuarios WHERE id=".$userId;
+    $user = $pdo->query($sql);
+}
 
 if ($sessao["usuario_master"] == "master") {
     try {
@@ -22,10 +31,6 @@ if ($sessao["usuario_master"] == "master") {
         $sql = "SELECT * FROM usuarios";
 
         $resultado = $pdo->query($sql);
-
-        // foreach ($resultado as $usuario) {
-        //     echo ($usuario["nome_completo"]);
-        // }
 
     } catch (PDOException $e) {
         echo "Erro: " . $e->getMessage();
@@ -86,8 +91,14 @@ if ($sessao["usuario_master"] == "master") {
                 <?php echo ($paginaSelecionada == "usuarios" ? '<i class="fas fa-play fa-xs fa-rotate-270" style="color: #0300b3;"></i>' : "") ?>
             </div>
 
+            <?php 
+            if($paginaSelecionada == "usuario-log") {
+                echo '<div class="d-flex flex-column align-items-center">';
+                echo '<div class="text-decoration-none">Log</div>';
+                echo '<i class="fas fa-play fa-xs fa-rotate-270" style="color: #0300b3;"></i>';
+            }   
+            </div>
         </nav>
-
     </header>
 
     <main>
@@ -95,12 +106,14 @@ if ($sessao["usuario_master"] == "master") {
         <div class="container justify-content-center border">
             <div class="d-flex gap-4 align-items-start">
                 <?php
-                echo ('<img src="../../src/img/' . $sessao["foto"] . '" alt="User" width="128" height="128" class="">');
-                echo ('<div class="d-flex flex-column align-items-start gap-2">');
-                echo ('<div class="fs-5 w-0 p-0 bold">Nome: <span class="fs-4 fw-bold">' . $sessao["nome"] . '</span></div>');
-                echo ('<div class="fs-4">Usuário: <span class="fs-4 fw-bold">' . $sessao["usuario_master"] . '</span></div>');
-                echo ('<button type="button" class="btn btn-danger" onClick="deslogar()">Deslogar</button>');
-                echo ('</div>');
+                if($paginaSelecionada != "usuario-log") {
+                    echo ('<img src="../../src/img/' . $sessao["foto"] . '" alt="User" width="128" height="128" class="">');
+                    echo ('<div class="d-flex flex-column align-items-start gap-2">');
+                    echo ('<div class="fs-5 w-0 p-0 bold">Nome: <span class="fs-4 fw-bold">' . $sessao["nome"] . '</span></div>');
+                    echo ('<div class="fs-4">Usuário: <span class="fs-4 fw-bold">' . $sessao["usuario_master"] . '</span></div>');
+                    echo ('<button type="button" class="btn btn-danger" onClick="deslogar()">Deslogar</button>');
+                    echo ('</div>');
+                }
                 ?>
             </div>
         </div>
@@ -116,6 +129,37 @@ if ($sessao["usuario_master"] == "master") {
             </div>';
 
             foreach ($resultado as $usuario) {
+                echo '<div class="d-flex gap-4 align-items-center border border-primary bg-primary-subtle">
+                    <div class="coluna-usuario-info-foto p-1">
+                        <img src="../../src/img/' . $usuario["foto"] . '" alt="User" width="32" height="32" class="d-inline-block align-text-top">
+                    </div>
+                    <div class="coluna-usuario-info-nome p-1">' . $usuario["nome_completo"] . '</div>
+                    <div class="coluna-usuario-info-usuario-master text-center p-1">' . $usuario["usuario_master"] . '</div>
+                    <div class="coluna-usuario-info-usuario-status text-center p-1">' . $usuario["status"] . '</div>
+                    <a href="?pagina=usuario-log&id="'.$usuario["id"]. '" class="btn btn-primary text-decoration-none">Log</a>
+                </div>';
+            }
+        }
+        ?>
+
+        /////////////////////////////////////////////////////////////////////
+        // COLOCAR NOMES ///
+        //////////////////////////////////////////////////////////////////
+        <?php
+        if ($sessao["usuario_master"] == "master" && $paginaSelecionada == "usuario-log") {
+            echo "
+            <div id='log-container'>
+            <div id='log-user-info'>
+                <img id='log-user-img' src='' alt='foto'/>
+                <div>
+                    <div id='log-user-name'>Nome do usuario</div>
+                    <div id='log-user-status' class='<?php $user['status'] == 'ativo' ? 'log-user-status-active' : 'log-user-inactive'; ?> '>Ativo</div>
+                </div>
+            </div>
+            <div id='log-text'>REGISTRO DE ATIVIDADES DO USUÁRIO</div>
+            ";
+
+            foreach ($userLog as $log) {
                 echo '<div class="d-flex gap-4 align-items-center border border-primary bg-primary-subtle">
                     <div class="coluna-usuario-info-foto p-1">
                         <img src="../../src/img/' . $usuario["foto"] . '" alt="User" width="32" height="32" class="d-inline-block align-text-top">
