@@ -14,7 +14,7 @@ if (isset($_GET["pagina"])) {
     $paginaSelecionada = "inicio";
 };
 
-$userId = 0;
+$user = "";
 $userLog = "";
 if (isset($_GET["id"]) && $paginaSelecionada == "usuario-log") {
     $userId = $_GET["id"];
@@ -152,23 +152,44 @@ if ($sessao["usuario_master"] == "master") {
             <div id='log-user-info'>
                 <img id='log-user-img' src='' alt='foto'/>
                 <div>
-                    <div id='log-user-name'>Nome do usuario</div>
+                    <div id='log-user-name'><?php $user["nome_completo"] ?></div>
                     <div id='log-user-status' class='<?php $user['status'] == 'ativo' ? 'log-user-status-active' : 'log-user-inactive'; ?> '>Ativo</div>
                 </div>
             </div>
             <div id='log-text'>REGISTRO DE ATIVIDADES DO USUÁRIO</div>
-            ";
+            
+            <div id='log-head-container'>
 
-            foreach ($userLog as $log) {
-                echo '<div class="d-flex gap-4 align-items-center border border-primary bg-primary-subtle">
-                    <div class="coluna-usuario-info-foto p-1">
-                        <img src="../../src/img/' . $usuario["foto"] . '" alt="User" width="32" height="32" class="d-inline-block align-text-top">
-                    </div>
-                    <div class="coluna-usuario-info-nome p-1">' . $usuario["nome_completo"] . '</div>
-                    <div class="coluna-usuario-info-usuario-master text-center p-1">' . $usuario["usuario_master"] . '</div>
-                    <div class="coluna-usuario-info-usuario-status text-center p-1">' . $usuario["status"] . '</div>
-                </div>';
-            }
+            <div id='log-head'>
+                <div class='log-data-1'>DATA</div>
+                <div class='log-data-2'>AÇÃO</div>
+                <div class='log-data-3'>USUARIO</div>
+                <div class='log-data-4'>DADOS</div>
+                <div class='log-data-5'>IP</div>
+            </div>
+        ";
+        
+        foreach ($userLog as $log) {
+
+
+            <div class='log-data-list'>
+                <div class='log-data-1'>10/05/2070 10:59:59</div>
+                <div class='log-data-2'>[LOGIN]USER/PASS/OK</div>
+                <div class='log-data-3'>-</div>
+                <div class='log-data-4'>usuario:12345/senha:1234</div>
+                <div class='log-data-5'>127.0.0.1</div>
+            </div>
+        
+            <div  class='log-data-list'>
+                <div class='log-data-1'>10/05/2070 10:59:59</div>
+                <div class='log-data-2'>[LOGIN]2MFA/OK</div>
+                <div class='log-data-3'>5</div>
+                <div class='log-data-4'>2MFA:Data Nascimento/dados:10/10/1970</div>
+                <div class='log-data-5'>127.0.0.1</div>
+            </div>
+               }     
+            
+          echo "</div>";
         }
         ?>
 
