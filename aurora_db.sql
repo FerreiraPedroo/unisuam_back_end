@@ -18,18 +18,6 @@ CREATE TABLE `passagem` (
   PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `hotel` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(45) NULL,
-  `endereco` VARCHAR(128) NULL,
-  `diaria_valor` DECIMAL NULL,
-  `incluso` LONGTEXT NULL,
-  `descricao` LONGTEXT NULL,
-  `classificacao` INT NULL,
-  `fotos` LONGTEXT NULL,
-  PRIMARY KEY (`id`)
-);
-
 CREATE TABLE `veiculo` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NULL,
@@ -146,7 +134,7 @@ VALUES
     'Taiza Reis',
     'master',
     'tai@master.com',
-    'master',
+    '123456',
     '1983/05/30',
     'Maria',
     '21000-000'
@@ -267,10 +255,21 @@ VALUES
     'O Chile oferece o impressionante Deserto do Atacama, um dos lugares mais áridos do planeta, onde a combinação de vastos salares, gêiseres e um céu incrivelmente claro torna a observação das estrelas uma experiência inesquecível.'
   ),
 
+CREATE TABLE `ingressos` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(45) NULL,
+  `endereco` VARCHAR(128) NULL,
+  `diaria_valor` DECIMAL NULL,
+  `incluso` LONGTEXT NULL,
+  `descricao` LONGTEXT NULL,
+  `classificacao` INT NULL,
+  `fotos` LONGTEXT NULL,
+  PRIMARY KEY (`id`)
+  
   INSERT INTO ingresso (titulo, local, evento, preco, data, descricao, fotos)
 SELECT titulo, origem AS local, destino AS evento, preco, data, descricao, fotos
 FROM passagem;
 
-INSERT INTO ingresso (titulo, local, evento, preco, data, descricao, fotos) VALUES
-('Deserto do Atacama', 'Casa da Moneda', 'Vale Nevado', 500.00, '2024-09-15', 'Passeios inesquecíveis na cidade do Chile.src/img/ingressos/001.png','src/img/ingressos/002 atacama.png','src/img/ingressos/casadamoeda.png'),
-('Europa', 'src/img/ingressos/Capelasistina.png', 'src/img/ingressos/CasadeJulieta.png','src/img/ingressos/Fontana.png', 'src/img/ingressos/ilhaSantorini.png','src/img/ingressos/Mykonos.png','src/img/ingressos/TemplodeZeus.png', 'src/img/ingressos/Mykonos.png', 1.000.00, '2024-07-21', 'Uma Europa que você pode conhecer da forma mais linda e inesquecível durante sua viagem.'),
+  INSERT INTO ingresso (titulo, local, evento, preco, data, descricao, fotos) VALUES
+('América Latina','Deserto do Atacama', 'Casa da Moneda', 'Vale Nevado', 1.000,00, '2024-09-15', 'Passeios inesquecíveis na cidade do Chile.src/img/ingressos/001.png','src/img/ingressos/002 atacama.png','src/img/ingressos/casadamoeda.png'),
+('Europa', 'src/img/ingressos/Capelasistina.png', 'src/img/ingressos/CasadeJulieta.png','src/img/ingressos/Fontana.png', 'src/img/ingressos/ilhaSantorini.png','src/img/ingressos/Mykonos.png','src/img/ingressos/TemplodeZeus.png', 'src/img/ingressos/Mykonos.png', 2.500,00, '2024-07-21', 'Uma Europa que você pode conhecer da forma mais linda e inesquecível durante sua viagem.');
